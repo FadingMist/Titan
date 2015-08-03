@@ -998,13 +998,13 @@ datum/preferences
 				var/msg = input(usr,"Give a general description of your character. This will be shown regardless of clothing, and may include OOC notes and preferences.","Flavor Text",html_decode(flavor_texts[href_list["task"]])) as message
 				if(msg != null)
 					msg = copytext(msg, 1, MAX_MESSAGE_LEN)
-					msg = html_encode(msg)
+					msg = rhtml_encode(msg)
 				flavor_texts[href_list["task"]] = msg
 			else
 				var/msg = input(usr,"Set the flavor text for your [href_list["task"]].","Flavor Text",html_decode(flavor_texts[href_list["task"]])) as message
 				if(msg != null)
 					msg = copytext(msg, 1, MAX_MESSAGE_LEN)
-					msg = html_encode(msg)
+					msg = rhtml_encode(msg)
 				flavor_texts[href_list["task"]] = msg
 		SetFlavorText(user)
 		return
@@ -1022,13 +1022,13 @@ datum/preferences
 				var/msg = input(usr,"Set the default flavour text for your robot. It will be used for any module without individual setting.","Flavour Text",html_decode(flavour_texts_robot["Default"])) as message
 				if(msg != null)
 					msg = copytext(msg, 1, MAX_MESSAGE_LEN)
-					msg = html_encode(msg)
+					msg = rhtml_encode(msg)
 				flavour_texts_robot[href_list["task"]] = msg
 			else
 				var/msg = input(usr,"Set the flavour text for your robot with [href_list["task"]] module. If you leave this empty, default flavour text will be used for this module.","Flavour Text",html_decode(flavour_texts_robot[href_list["task"]])) as message
 				if(msg != null)
 					msg = copytext(msg, 1, MAX_MESSAGE_LEN)
-					msg = html_encode(msg)
+					msg = rhtml_encode(msg)
 				flavour_texts_robot[href_list["task"]] = msg
 		SetFlavourTextRobot(user)
 		return
@@ -1048,7 +1048,7 @@ datum/preferences
 
 			if(medmsg != null)
 				medmsg = copytext(medmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				medmsg = html_encode(medmsg)
+				medmsg = rhtml_encode(medmsg)
 
 				med_record = medmsg
 				SetRecords(user)
@@ -1058,7 +1058,7 @@ datum/preferences
 
 			if(secmsg != null)
 				secmsg = copytext(secmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				secmsg = html_encode(secmsg)
+				secmsg = rhtml_encode(secmsg)
 
 				sec_record = secmsg
 				SetRecords(user)
@@ -1067,7 +1067,7 @@ datum/preferences
 
 			if(genmsg != null)
 				genmsg = copytext(genmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				genmsg = html_encode(genmsg)
+				genmsg = rhtml_encode(genmsg)
 
 				gen_record = genmsg
 				SetRecords(user)
@@ -1077,7 +1077,7 @@ datum/preferences
 
 			if(exploitmsg != null)
 				exploitmsg = copytext(exploitmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				exploitmsg = html_encode(exploitmsg)
+				exploitmsg = rhtml_encode(exploitmsg)
 
 				exploit_record = exploitmsg
 				SetAntagoptions(user)

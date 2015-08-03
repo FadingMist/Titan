@@ -92,7 +92,7 @@
 							var/icon/side = active1.fields["photo_side"]
 							usr << browse_rsc(front, "front.png")
 							usr << browse_rsc(side, "side.png")
-						
+
 							dat += "<table><tr><td>Name: [active1.fields["name"]] \
 									ID: [active1.fields["id"]]<BR>\n	\
 									Sex: <A href='?src=\ref[src];field=sex'>[active1.fields["sex"]]</A><BR>\n	\
@@ -330,7 +330,7 @@
 							src.active2.fields["cdi_d"] = t1
 					if("notes")
 						if (istype(src.active2, /datum/data/record))
-							var/t1 = html_encode(trim(copytext(input("Please summarize notes:", "Med. records", html_decode(src.active2.fields["notes"]), null)  as message,1,MAX_MESSAGE_LEN)))
+							var/t1 = rhtml_encode(trim(copytext(input("Please summarize notes:", "Med. records", html_decode(src.active2.fields["notes"]), null)  as message,1,MAX_MESSAGE_LEN)))
 							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!interactable() && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
 								return
 							src.active2.fields["notes"] = t1

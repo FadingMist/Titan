@@ -34,10 +34,67 @@
 	return t
 
 //Removes a few problematic characters
-/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#"))
+
+/proc/sanitize_simple(var/t,var/list/repl_chars = list("ÿ"="&#255;", "\n"="#","\t"="#","ï¿½"="ï¿½"))
 	for(var/char in repl_chars)
-		t = replacetext(t, char, repl_chars[char])
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+1)
+			index = findtext(t, char)
 	return t
+
+proc/sanitize_russian(var/msg, var/html = 0)
+	var/rep
+	if(html)
+		rep = "&#x44F;"
+	else
+		rep = "&#255;"
+	var/index = findtext(msg, "ÿ")
+	while(index)
+		msg = copytext(msg, 1, index) + rep + copytext(msg, index + 1)
+		index = findtext(msg, "ÿ")
+	return msg
+
+/proc/rhtml_encode(var/msg, var/html = 0)
+	var/rep
+	if(html)
+		rep = "&#x44F;"
+	else
+		rep = "&#255;"
+	var/list/c = text2list(msg, "ÿ")
+	if(c.len == 1)
+		c = text2list(msg, rep)
+		if(c.len == 1)
+			return html_encode(msg)
+	var/out = ""
+	var/first = 1
+	for(var/text in c)
+		if(!first)
+			out += rep
+		first = 0
+		out += html_encode(text)
+	return out
+
+/proc/rhtml_decode(var/msg, var/html = 0)
+	var/rep
+	if(html)
+		rep = "&#x44F;"
+	else
+		rep = "&#255;"
+	var/list/c = text2list(msg, "ÿ")
+	if(c.len == 1)
+		c = text2list(msg, "&#255;")
+		if(c.len == 1)
+			c = text2list(msg, "&#x4FF")
+			if(c.len == 1)
+				return html_decode(msg)
+	var/out = ""
+	var/first = 1
+	for(var/text in c)
+		if(!first)
+			out += rep
+		first = 0
+		out += html_decode(text)
 
 /proc/readd_quotes(var/t)
 	var/list/repl_chars = list("&#34;" = "\"")
@@ -50,17 +107,17 @@
 
 //Runs byond's sanitization proc along-side sanitize_simple
 /proc/sanitize(var/t,var/list/repl_chars = null)
-	return html_encode(sanitize_simple(t,repl_chars))
+	return rhtml_encode(sanitize_simple(t,repl_chars))
 
 //Runs sanitize and strip_html_simple
-//I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's html_encode()
+//I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's rhtml_encode()
 /proc/strip_html(var/t,var/limit=MAX_MESSAGE_LEN)
 	return copytext((sanitize(strip_html_simple(t))),1,limit)
 
 //Runs byond's sanitization proc along-side strip_html_simple
-//I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' that html_encode() would cause
+//I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' that rhtml_encode() would cause
 /proc/adminscrub(var/t,var/limit=MAX_MESSAGE_LEN)
-	return copytext((html_encode(strip_html_simple(t))),1,limit)
+	return copytext((rhtml_encode(strip_html_simple(t))),1,limit)
 
 
 //Returns null if there is any bad text in the string

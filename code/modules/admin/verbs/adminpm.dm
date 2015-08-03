@@ -98,6 +98,7 @@
 					else
 						adminhelp(reply)													//sender has left, adminhelp instead
 				return
+	msg = sanitize(msg)
 	src << "<span class='pm'><span class='out'>" + create_text_tag("pm_out_alt", "PM", src) + " to <span class='name'>[get_options_bar(C, holder ? 1 : 0, holder ? 1 : 0, 1)]</span>: <span class='message'>[msg]</span></span></span>"
 	C << "<span class='pm'><span class='in'>" + create_text_tag("pm_in", "", C) + " <b>\[[recieve_pm_type] PM\]</b> <span class='name'>[get_options_bar(src, C.holder ? 1 : 0, C.holder ? 1 : 0, 1)]</span>: <span class='message'>[msg]</span></span></span>"
 
@@ -107,7 +108,6 @@
 		C << 'sound/effects/adminhelp.ogg'
 
 	log_admin("PM: [key_name(src)]->[key_name(C)]: [msg]")
-	send2adminirc("Reply: [key_name(src)]->[key_name(C)]: [html_decode(msg)]")
 
 	//we don't use message_admins here because the sender/receiver might get it too
 	for(var/client/X in admins)
@@ -136,7 +136,7 @@
 
 	send2adminirc("PlayerPM from [key_name(src)]: [html_decode(msg)]")
 
-	src << "<span class='pm'><span class='out'>" + create_text_tag("pm_out_alt", "", src) + " to <span class='name'>Admin IRC</span>: <span class='message'>[msg]</span></span></span>"
+	src << "<span class='pm'><span class='out'>" + create_text_tag("pm_out_alt", "", src) + " to <span class='name'Admin IRC</span>: <span class='message'>[msg]</span></span></span>"
 
 	log_admin("PM: [key_name(src)]->IRC: [msg]")
 	for(var/client/X in admins)
