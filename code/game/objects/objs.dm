@@ -126,11 +126,13 @@
 	src.machine = null
 
 /mob/proc/set_machine(var/obj/O)
-/*	if(src.machine)
+	if (istype(src, /mob/living/silicon/ai))
+		return
+	if(src.machine)
 		unset_machine()
 	src.machine = O
 	if(istype(O))
-		O.in_use = 1*/
+		O.in_use = 1
 
 /obj/item/proc/updateSelfDialog()
 	var/mob/M = src.loc

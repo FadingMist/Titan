@@ -111,7 +111,7 @@
 		user.sprint = initial
 
 	user.unset_machine() //Uncomment this if it causes problems.
-	//user.lightNearbyCamera()
+	user.lightNearbyCamera()
 
 
 // Return to the Core.
