@@ -232,6 +232,14 @@
 	icon_on = "guessipon"
 	icon_off = "guessip"
 
+/obj/item/weapon/flame/lighter/zippo/fluff/sbotkin //Sbotkin: Alex Sbotkin
+	name = "Sbotkin's Zippo"
+	desc = "A black Zippo with golden 'S' on it. Belongs to Alex Sbotkin."
+	icon = 'icons\obj\custom_items.dmi'
+	icon_state = "sbotkinzippo"
+	icon_on = "sbotkinzippoon"
+	icon_off = "sbotkinzippo"
+
 ///////////////////////////// Jarcolr - Uberto Dandolo - Painted secure briefcase /////////////
 
 /obj/item/weapon/storage/secure/briefcase/fluff/uberto_dandolo
