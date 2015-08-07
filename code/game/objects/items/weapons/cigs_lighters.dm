@@ -457,6 +457,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
 
 			user.SetLuminosity(user.luminosity + 2)
+			playsound(src.loc, 'sound/items/zippo_open.ogg', 100, 1)
 			processing_objects.Add(src)
 		else
 			lit = 0
@@ -468,6 +469,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				user.visible_message("<span class='notice'>[user] quietly shuts off the [src].</span>")
 
 			user.SetLuminosity(user.luminosity - 2)
+			playsound(src.loc, 'sound/items/zippo_close.ogg', 100, 1)
 			processing_objects.Remove(src)
 	else
 		return ..()
