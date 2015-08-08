@@ -24,12 +24,20 @@ macro "macro"
 		command = ".northwest"
 		is-disabled = false
 	elem 
+		name = "ALT+WEST"
+		command = "westfaceperm"
+		is-disabled = false
+	elem 
 		name = "CTRL+WEST"
 		command = "westface"
 		is-disabled = false
 	elem 
 		name = "WEST+REP"
 		command = ".west"
+		is-disabled = false
+	elem 
+		name = "ALT+NORTH"
+		command = "northfaceperm"
 		is-disabled = false
 	elem 
 		name = "CTRL+NORTH"
@@ -40,12 +48,20 @@ macro "macro"
 		command = ".north"
 		is-disabled = false
 	elem 
+		name = "ALT+EAST"
+		command = "eastfaceperm"
+		is-disabled = false
+	elem 
 		name = "CTRL+EAST"
 		command = "eastface"
 		is-disabled = false
 	elem 
 		name = "EAST+REP"
 		command = ".east"
+		is-disabled = false
+	elem 
+		name = "ALT+SOUTH"
+		command = "southfaceperm"
 		is-disabled = false
 	elem 
 		name = "CTRL+SOUTH"
@@ -234,6 +250,22 @@ macro "hotkeymode"
 		command = ".south"
 		is-disabled = false
 	elem 
+		name = "ALT+WEST"
+		command = "westfaceperm"
+		is-disabled = false
+	elem 
+		name = "ALT+NORTH"
+		command = "northfaceperm"
+		is-disabled = false
+	elem 
+		name = "ALT+EAST"
+		command = "eastfaceperm"
+		is-disabled = false
+	elem 
+		name = "ALT+SOUTH"
+		command = "southfaceperm"
+		is-disabled = false
+	elem 
 		name = "INSERT"
 		command = "a-intent right"
 		is-disabled = false
@@ -324,6 +356,14 @@ macro "hotkeymode"
 	elem 
 		name = "CTRL+H"
 		command = "holster"
+		is-disabled = false
+	elem 
+		name = "J"
+		command = "toggle-gun-mode"
+		is-disabled = false
+	elem 
+		name = "CTRL+J"
+		command = "toggle-gun-mode"
 		is-disabled = false
 	elem 
 		name = "Q"
@@ -1158,7 +1198,7 @@ window "chemdispenser_reagents"
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 512,4
+		pos = 281,0
 		size = 640x440
 		anchor1 = none
 		anchor2 = none
@@ -1184,7 +1224,7 @@ window "mainwindow"
 		can-resize = true
 		is-pane = false
 		is-minimized = false
-		is-maximized = false
+		is-maximized = true
 		can-scroll = none
 		icon = 'icons\\ss13_64.png'
 		image = ""
@@ -1197,7 +1237,7 @@ window "mainwindow"
 		on-close = ""
 	elem "hotkey_toggle"
 		type = BUTTON
-		pos = -720,-118
+		pos = 560,420
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -1226,7 +1266,7 @@ window "mainwindow"
 	elem "mainvsplit"
 		type = CHILD
 		pos = 3,0
-		size = 0x0
+		size = 634x416
 		anchor1 = 0,0
 		anchor2 = 100,100
 		font-family = ""
@@ -1251,15 +1291,15 @@ window "mainwindow"
 		lock = none
 	elem "input"
 		type = INPUT
-		pos = 3,-118
-		size = 0x20
+		pos = 3,420
+		size = 517x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		font-family = ""
 		font-size = 0
 		font-style = ""
 		text-color = #000000
-		background-color = #d3b5b5
+		background-color = #a4d5db
 		is-visible = true
 		is-disabled = false
 		is-transparent = false
@@ -1275,7 +1315,7 @@ window "mainwindow"
 		no-command = false
 	elem "saybutton"
 		type = BUTTON
-		pos = -760,-118
+		pos = 520,420
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -1810,7 +1850,7 @@ window "infowindow"
 	elem "info"
 		type = INFO
 		pos = 0,0
-		size = 638x475
+		size = 638x477
 		anchor1 = 0,0
 		anchor2 = 100,100
 		font-family = ""
@@ -1833,7 +1873,7 @@ window "infowindow"
 		tab-font-family = ""
 		tab-font-size = 0
 		tab-font-style = ""
-		allow-html = false
+		allow-html = true
 		multi-line = true
 		on-show = ".winset\"rpane.infob.is-visible=true;rpane.browseb.is-visible=true?rpane.infob.pos=130,0:rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
 		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.browseb.is-visible=true?rpane.browseb.is-checked=true rpane.rpanewindow.left=browserwindow:rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
