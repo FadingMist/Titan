@@ -1141,7 +1141,9 @@ area/space/atmosalert()
 	name = "\improper Engineering Workshop"
 	icon_state = "engineering_workshop"
 
-
+/area/engineering/singulo
+	name = "\improper Singularity Engine"
+	icon_state = "engine"
 
 //Solars
 
