@@ -445,6 +445,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			item_state = icon_on
 			if(istype(src, /obj/item/weapon/flame/lighter/zippo) )
 				user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
+				playsound(src.loc, 'sound/items/zippo_open.ogg', 100, 1)
 			else
 				if(prob(95))
 					user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
@@ -457,7 +458,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
 
 			user.SetLuminosity(user.luminosity + 2)
-			playsound(src.loc, 'sound/items/zippo_open.ogg', 100, 1)
 			processing_objects.Add(src)
 		else
 			lit = 0
@@ -465,11 +465,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			item_state = icon_off
 			if(istype(src, /obj/item/weapon/flame/lighter/zippo) )
 				user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing.</span>")
+				playsound(src.loc, 'sound/items/zippo_close.ogg', 100, 1)
 			else
 				user.visible_message("<span class='notice'>[user] quietly shuts off the [src].</span>")
 
 			user.SetLuminosity(user.luminosity - 2)
-			playsound(src.loc, 'sound/items/zippo_close.ogg', 100, 1)
 			processing_objects.Remove(src)
 	else
 		return ..()
