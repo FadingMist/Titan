@@ -81,6 +81,41 @@
 		return 1
 	return 0
 
+/obj/machinery/smartfridge/secure/bloodbank
+	name = "\improper Blood Bank"
+	desc = "A refrigerated storage unit for storing blood packs."
+	icon_state = "smartfridge_blood" //To fix the icon in the map editor.
+	icon_on = "smartfridge_blood"
+	icon_off = "smartfridge_blood-off"
+	req_access_txt = "5"
+
+/obj/machinery/smartfridge/secure/bloodbank/accept_check(var/obj/item/O as obj)
+	if(istype(O,/obj/item/weapon/reagent_containers/blood/))
+		return 1
+
+/obj/machinery/smartfridge/secure/bloodbank/New()
+	..()
+	new /obj/item/weapon/reagent_containers/blood/OMinus(src)
+	new /obj/item/weapon/reagent_containers/blood/OMinus(src)
+	new /obj/item/weapon/reagent_containers/blood/OMinus(src)
+	item_quants["BloodPack O-"] = 3
+	new /obj/item/weapon/reagent_containers/blood/AMinus(src)
+	item_quants["BloodPack A-"] = 1
+	new /obj/item/weapon/reagent_containers/blood/APlus(src)
+	item_quants["BloodPack A+"] = 1
+	new /obj/item/weapon/reagent_containers/blood/BMinus(src)
+	item_quants["BloodPack B-"] = 1
+	new /obj/item/weapon/reagent_containers/blood/BPlus(src)
+	item_quants["BloodPack B+"] = 1
+	new /obj/item/weapon/reagent_containers/blood/OPlus(src)
+	item_quants["BloodPack O+"] = 1
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	item_quants["Empty BloodPack"] = 5
+
 /obj/machinery/smartfridge/secure/virology
 	name = "\improper Refrigerated Virus Storage"
 	desc = "A refrigerated storage unit for storing viral material."
