@@ -2214,3 +2214,14 @@ var/list/the_station_areas = list (
 
 		spawn(60) .()
 
+/// Event
+
+/area/event/syndipod1
+	name = "\improper Operative's shuttle"
+	icon_state = "away"
+	requires_power = 0
+
+/area/event/syndipod2
+	name = "\improper Operative's shuttle"
+	icon_state = "away"
+	requires_power = 0

@@ -366,6 +366,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					else
 						var/i = 0
 						for(var/datum/feed_message/MESSAGE in src.viewing_channel.messages)
+							MESSAGE = sanitize(MESSAGE)
 							i++
 							dat+="-[MESSAGE.body] <BR>"
 							if(MESSAGE.img)
@@ -409,6 +410,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					dat+="<I>No feed messages found in channel...</I><BR>"
 				else
 					for(var/datum/feed_message/MESSAGE in src.viewing_channel.messages)
+						MESSAGE = sanitize(MESSAGE)
 						dat+="-[MESSAGE.body] <BR><FONT SIZE=1>\[[MESSAGE.message_type] by <FONT COLOR='maroon'>[MESSAGE.author]</FONT>\]</FONT><BR>"
 						dat+="<FONT SIZE=2><A href='?src=\ref[src];censor_channel_story_body=\ref[MESSAGE]'>[(MESSAGE.body == "\[REDACTED\]") ? ("Undo story censorship") : ("Censor story")]</A>  -  <A href='?src=\ref[src];censor_channel_story_author=\ref[MESSAGE]'>[(MESSAGE.author == "\[REDACTED\]") ? ("Undo Author Censorship") : ("Censor message Author")]</A></FONT><BR>"
 				dat+="<BR><A href='?src=\ref[src];setScreen=[10]'>Back</A>"
@@ -424,7 +426,6 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					else
 						for(var/datum/feed_message/MESSAGE in src.viewing_channel.messages)
 							dat+="-[MESSAGE.body] <BR><FONT SIZE=1>\[[MESSAGE.message_type] by <FONT COLOR='maroon'>[MESSAGE.author]</FONT>\]</FONT><BR>"
-
 				dat+="<BR><A href='?src=\ref[src];setScreen=[11]'>Back</A>"
 			if(14)
 				dat+="<B>Wanted Issue Handler:</B>"
