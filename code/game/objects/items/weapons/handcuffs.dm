@@ -25,16 +25,8 @@
 		place_handcuffs(user, user)
 		return
 	if(!C.handcuffed)
-		if (C == user)
-			place_handcuffs(user, user)
+		place_handcuffs(Ñ, user)
 			return
-
-		//check for an aggressive grab
-		for (var/obj/item/weapon/grab/G in C.grabbed_by)
-			if (G.loc == user && G.state >= GRAB_AGGRESSIVE)
-				place_handcuffs(C, user)
-				return
-		user << "\red You need to have a firm grip on [C] before you can put \the [src] on!"
 
 /obj/item/weapon/handcuffs/proc/place_handcuffs(var/mob/living/carbon/target, var/mob/user)
 	playsound(src.loc, cuff_sound, 30, 1, -2)
