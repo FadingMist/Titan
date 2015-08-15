@@ -25,8 +25,8 @@
 		place_handcuffs(user, user)
 		return
 	if(!C.handcuffed)
-		place_handcuffs(Ñ, user)
-			return
+		place_handcuffs(C, user)
+		return
 
 /obj/item/weapon/handcuffs/proc/place_handcuffs(var/mob/living/carbon/target, var/mob/user)
 	playsound(src.loc, cuff_sound, 30, 1, -2)
