@@ -20,6 +20,22 @@
 		new /obj/item/clothing/mask/gas(src)
 		return
 
+/obj/structure/closet/secure_closet/scientist/xenobiologist
+	name = "xenobiologist's locker"
+	req_access = list(access_xenobiology)
+	New()
+		..()
+		new /obj/item/clothing/under/rank/scientist(src)
+		new /obj/item/clothing/suit/storage/toggle/labcoat(src)
+		new /obj/item/device/analyzer/plant_analyzer(src)
+		new /obj/item/weapon/minihoe(src)
+		new /obj/item/weapon/hatchet(src)
+		new /obj/item/clothing/shoes/white(src)
+		new /obj/item/device/radio/headset/headset_sci(src)
+		new /obj/item/weapon/tank/air(src)
+		new /obj/item/clothing/mask/gas(src)
+		return
+
 
 
 /obj/structure/closet/secure_closet/RD
